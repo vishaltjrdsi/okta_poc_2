@@ -1,0 +1,127 @@
+/* Grid container spacing */
+.ag-theme-alpine {
+  --ag-font-size: 14px;
+  --ag-font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header styling */
+.ag-theme-alpine .ag-header {
+  font-weight: 600;
+  background-color: #f8f9fb;
+}
+
+/* Cell alignment */
+.ag-theme-alpine .ag-cell {
+  display: flex;
+  align-items: center;
+}
+
+/* Center status column */
+.ag-theme-alpine .ag-cell[col-id="status"] {
+  justify-content: center;
+}
+
+/* Center action column */
+.ag-theme-alpine .ag-cell[col-id="Actions"] {
+  justify-content: center;
+}
+
+/* Edit button */
+button {
+  background: #1976d2;
+  border: none;
+  padding: 6px 14px;
+  color: white;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #125aa0;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+/* Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider background */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+
+/* Circle inside toggle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* Active state */
+input:checked + .slider {
+  background-color: #000;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+.edit-btn {
+  padding: 6px 12px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.edit-btn:hover {
+  background: #125ea2;
+}
+
+.status-cell-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.status-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #1976d2;
+}
+
+.status-checkbox:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}

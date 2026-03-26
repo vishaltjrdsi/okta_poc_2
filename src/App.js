@@ -5,6 +5,7 @@ import { oktaAuth } from "./config/oktaConfig";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import EditPage from "./pages/EditPage";
 import Navbar from "./components/Navbar/Navbar";
 
 // Wrapper to provide restoreOriginalUri using useNavigate
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/edit/:key" element={<EditPage />} />
           <Route path="/login/callback" element={<LoginCallback />} />
           {/* <Route
             path="/dashboard"

@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import configReducer from "./configSlice";
+import appPropertiesReducer from "../slices/appPropertiesSlice";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    configs: configReducer,
+    appProperties: appPropertiesReducer,
   },
 });
+
+export default store;
