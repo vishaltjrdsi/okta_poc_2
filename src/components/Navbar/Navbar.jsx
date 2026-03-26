@@ -10,16 +10,15 @@ const Navbar = () => {
   const logout = async () => await oktaAuth.signOut();
 
   // 👇 Get page name from route
-  const getPageTitle = () => {
-    switch (location.pathname) {
-      case "/":
-        return "Home";
-      case "/dashboard":
-        return "Dashboard";
-      default:
-        return "App";
-    }
-  };
+const getPageTitle = () => {
+  const path = location.pathname;
+
+  if (path === "/") return "Home";
+  if (path === "/dashboard") return "Dashboard";
+  if (path.startsWith("/edit/")) return "Edit";
+
+  return "App";
+};
 
   return (
     <nav className="navbar">

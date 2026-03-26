@@ -13,7 +13,8 @@ const OktaSecurityWrapper = ({ children }) => {
   const navigate = useNavigate();
 
   const restoreOriginalUri = (_oktaAuth, originalUri) => {
-    navigate("/dashboard", { replace: true });
+    // redirect to original URI after login, fallback to /dashboard
+    navigate(originalUri || "/dashboard", { replace: true });
   };
 
   return (
@@ -25,25 +26,28 @@ const OktaSecurityWrapper = ({ children }) => {
 
 function App() {
   return (
-    <>
-
-  
     <BrowserRouter>
       <OktaSecurityWrapper>
-            <Navbar />  
+        <Navbar />
         <Routes>
+          {/* Public route */}
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/edit/:key" element={<EditPage />} />
+
+          {/* Login callback */}
           <Route path="/login/callback" element={<LoginCallback />} />
-          {/* <Route
+
+          {/* Protected routes */}
+          <Route
             path="/dashboard"
             element={<ProtectedRoute element={<Dashboard />} />}
-          /> */}
+          />
+          <Route
+            path="/edit/:key"
+            element={<ProtectedRoute element={<EditPage />} />}
+          />
         </Routes>
       </OktaSecurityWrapper>
     </BrowserRouter>
-      </>
   );
 }
 
