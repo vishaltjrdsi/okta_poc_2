@@ -1,83 +1,28 @@
-/* Dashboard.css */
-
-/* Overall page layout */
 .dashboard-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: stretch;
   min-height: 100vh;
-  background-color: #f5f5f5; /* light grey background */
-  color: #333; /* dark text for readability */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
   padding: 2rem;
 }
 
-/* Card style for the dashboard content */
-.dashboard-card {
-  background-color: #fff; /* white card */
-  border-radius: 12px;
-  padding: 2rem 3rem;
-  max-width: 500px;
+/* Username text */
+.welcome-text {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.username {
+  color: #2a7fff;
+  font-weight: 600;
+}
+
+/* Table section */
+.config-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
   width: 100%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin-top: 3rem;
-}
-
-/* Heading */
-.dashboard-card h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #222; /* dark grey heading */
-}
-
-/* Greeting text */
-.dashboard-card p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #555; /* default grey text */
-}
-
-/* Highlight the user's name */
-.dashboard-card p .username {
-  color: #2a7fff; /* bright blue accent for name */
-  font-weight: 600; /* slightly bolder */
-}
-
-
-/* Logout button */
-.dashboard-card button {
-  background: linear-gradient(90deg, #ff6b6b, #f06595);
-  border: none;
-  border-radius: 50px;
-  color: #fff;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-.dashboard-card button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  background: linear-gradient(90deg, #f06595, #ff6b6b);
-}
-
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .dashboard-card {
-    padding: 1.5rem 2rem;
-  }
-
-  .dashboard-card h1 {
-    font-size: 1.5rem;
-  }
-
-  .dashboard-card p {
-    font-size: 1rem;
-  }
 }

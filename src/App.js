@@ -5,6 +5,7 @@ import { oktaAuth } from "./config/oktaConfig";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/Navbar/Navbar";
 
 // Wrapper to provide restoreOriginalUri using useNavigate
 const OktaSecurityWrapper = ({ children }) => {
@@ -23,18 +24,24 @@ const OktaSecurityWrapper = ({ children }) => {
 
 function App() {
   return (
+    <>
+
+  
     <BrowserRouter>
       <OktaSecurityWrapper>
+            <Navbar />  
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login/callback" element={<LoginCallback />} />
-          <Route
+          {/* <Route
             path="/dashboard"
             element={<ProtectedRoute element={<Dashboard />} />}
-          />
+          /> */}
         </Routes>
       </OktaSecurityWrapper>
     </BrowserRouter>
+      </>
   );
 }
 

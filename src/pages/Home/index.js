@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>Home</h1>
+      <h1>Login to continue...</h1>
 
       {authState?.isAuthenticated ? (
         <>
