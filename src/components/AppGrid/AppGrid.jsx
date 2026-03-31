@@ -1,6 +1,6 @@
-import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { selectAllProperties } from "../../slices/appPropertiesSlice";
+import React, { useMemo, useEffect } from "react";
+import { useSelector, useDispatch  } from "react-redux";
+import { selectAllProperties, fetchProperties } from "../../slices/appPropertiesSlice";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
 import { useNavigate } from "react-router-dom";
@@ -13,22 +13,34 @@ import "./AppGrid.css";
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export default function AppGrid() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const rowData = useSelector(selectAllProperties) || [];
+
+  const rowData = useSelector(selectAllProperties);
+  const loading = useSelector((state) => state.appProperties.loading);
+
+  useEffect(() => {
+    if (!rowData.length) {
+      dispatch(fetchProperties());
+    }
+  }, [dispatch, rowData.length]);
 
   const colDefs = useMemo(() => getColumnDefinitions(navigate), [navigate]);
 
+  const rowDataMemo = useMemo(() => [...rowData], [rowData]);
+
   return (
     <div className="ag-theme-alpine" style={{ width: "100%", height: "600px" }}>
-      <AgGridReact
+      {loading && <p>Loading...</p>}
+
+     <AgGridReact
         theme="legacy"
-        rowData={rowData}
+        rowData={rowDataMemo}
         columnDefs={colDefs}
         pagination={true}
         paginationPageSize={10}  
         overlayNoRowsTemplate="<span class='no-rows'>No rows to show</span>"
       />
-      
     </div>
   );
 }
